@@ -17,7 +17,6 @@
     margin: 0;
     padding: 0;
 }
-/* Scrollbar personalizada para navegadores Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -44,13 +43,11 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Para Firefox */
 html {
     scrollbar-width: thin;
     scrollbar-color: #667eea rgba(255, 255, 255, 0.1);
 }
 
-/* Botão de saída do aplicativo */
 .exit-button {
     position: fixed;
     top: 20px;
@@ -605,7 +602,6 @@ footer {
     50% { transform: translateY(-5px) scale(1.03); }
 }
 
-/* Responsividade otimizada */
 @media (max-width: 768px) {
     body {
         padding: 15px;
