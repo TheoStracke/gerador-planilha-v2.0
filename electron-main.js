@@ -1,4 +1,3 @@
-// electron-main.js ATUALIZADO E CORRIGIDO
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -6,13 +5,6 @@ const fs = require('fs');
 let mainWindow;
 let splashWindow;
 
-// NÃO PRECISAMOS MAIS DESTE IPC PARA A LÓGICA DO XLSX
-// ipcMain.handle('get-user-data-path', async () => { ... });
-
-/**
- * Novo manipulador IPC para salvar o arquivo XLSX.
- * Ele recebe o buffer de dados do arquivo diretamente do renderer.
- */
 ipcMain.handle('show-save-dialog-and-save', async (event, buffer) => {
   if (!mainWindow) {
     return { success: false, error: 'Janela principal não encontrada.' };
@@ -75,7 +67,6 @@ function createMainWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      // enableRemoteModule: true, // Desabilitado por segurança, não é mais necessário
     },
     titleBarStyle: 'default',
     backgroundColor: '#f0f4f8',
@@ -144,13 +135,11 @@ app.on('window-all-closed', () => {
   }
 });
 
-// Suas configurações adicionais estão ótimas
 app.commandLine.appendSwitch('--disable-gpu-vsync');
 app.commandLine.appendSwitch('--disable-background-timer-throttling');
 app.commandLine.appendSwitch('--disable-backgrounding-occluded-windows');
 app.commandLine.appendSwitch('--disable-renderer-backgrounding');
 
-// Tratamento de erros
 process.on('uncaughtException', (error) => {
   console.error('Erro não capturado:', error);
   dialog.showErrorBox('Erro Inesperado', `Ocorreu um erro fatal: ${error.message}`);
