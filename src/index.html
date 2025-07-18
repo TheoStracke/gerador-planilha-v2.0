@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilitação de Certificados - Rede Vellum</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <button id="exit-button" class="exit-button" title="Sair do aplicativo">
+        ✕
+    </button>
+    <main class="main-container">
+        <header class="header">
+            <img src="imagem.png" alt="Rede Vellum">
+            <h1>Gerador de Arquivo para Certificado</h1>
+        </header>
+        
+        <form id="form-dados">
+            <div class="form-group">
+                <input type="text" name="nome" id="nome" class="form-input" required placeholder=" ">
+                <label for="nome" class="form-label">Nome Completo</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" name="num_serie" id="num_serie" class="form-input" required placeholder=" ">
+                <label for="num_serie" class="form-label">Número de Série</label>
+            </div>
+            
+            <div class="form-group">
+                <select name="ativar" id="ativar" class="form-select" required>
+                    <option value="SIM">SIM</option>
+                    <option value="NÃO">NÃO</option>
+                </select>
+                <label for="ativar" class="form-label">Ativar Certificado?</label>
+            </div>
+            
+            <div class="form-group">
+                <select name="motivo" id="motivo" class="form-select" required>
+                    <option value="4">4 - Período de uso renovado</option>
+                    <option value="1">1 - Fim do período de uso contratado</option>
+                </select>
+                   <label for="motivo" class="form-label">Motivo</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="date" name="data_inicial" id="data_inicial" class="form-input" required>
+                <label for="data_inicial" class="form-label">Data Inicial</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="date" name="data_final" id="data_final" class="form-input" required>
+                   <label for="data_final" class="form-label">Data Final</label>
+            </div>
+            
+            <div class="button-group">
+                <button type="button" id="add-data-button" class="btn btn-primary">Adicionar Dados</button>
+                <button type="button" id="generate-xlsx-button" class="btn btn-secondary">Gerar XLSX</button>
+            </div>
+        </form>
+
+        <section class="preview-section">
+            <h2>Pré-visualização dos Dados</h2>
+            <table class="preview-table">
+                <thead>
+                    <tr>
+                        <th>Nome Completo</th>
+                        <th>Número de Série</th>
+                        <th>Ativar</th>
+                        <th>Motivo</th>
+                        <th>Data Inicial</th>
+                        <th>Data Final</th>
+                    </tr>
+                </thead>
+                <tbody id="previewTableBody">
+                    </tbody>
+            </table>
+            <button type="button" id="clear-preview-button" class="btn btn-clear">Limpar Pré-visualização</button>
+        </section>
+        
+        <footer>
+            <p>Desenvolvido por Theo Cardoso Stracke - 2025 - ©</p>
+        </footer>
+    </main>
+    <script src="renderer.js"></script>
+</body>
+</html>

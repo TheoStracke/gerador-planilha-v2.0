@@ -1,0 +1,13 @@
+directories:
+  output: dist
+  buildResources: assets
+appId: com.redevellum.planilhafacil
+productName: Planilha Fácil Rede Vellum
+files:
+  - filter:
+      - src/**/*
+      - dados/**/*
+      - electron-main.js
+win:
+  icon: src/imagem.ico
+electronVersion: 29.4.6
